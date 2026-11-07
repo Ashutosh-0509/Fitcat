@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FitCat palette — deep forest, sun-bleached linen, vitality orange */
+    --background: 161 54% 11%;
+    --foreground: 40 33% 96%;
+
+    --card: 158 40% 13%;
+    --card-foreground: 40 33% 96%;
+
+    --popover: 159 45% 12%;
+    --popover-foreground: 40 33% 96%;
+
+    --primary: 16 100% 60%;
+    --primary-foreground: 160 60% 6%;
+
+    --secondary: 155 30% 18%;
+    --secondary-foreground: 40 33% 96%;
+
+    --muted: 155 26% 17%;
+    --muted-foreground: 150 16% 62%;
+
+    --accent: 155 30% 20%;
+    --accent-foreground: 40 33% 96%;
+
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 40 33% 96%;
+
+    --border: 155 43% 18%;
+    --input: 155 36% 22%;
+    --ring: 16 100% 60%;
+
+    --forest: 161 54% 11%;
+    --forest-deep: 160 58% 6%;
+    --forest-soft: 158 34% 15%;
+    --linen: 40 33% 96%;
+    --moss: 150 16% 62%;
+    --rule: 155 43% 18%;
+
+    --radius: 0.75rem;
+
+    --font-display: "Bricolage Grotesque", "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Monospaced data labels: section numbers, prices, micro-copy */
+  .fc-label {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-moss;
+  }
+
+  .fc-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+    text-wrap: balance;
+  }
+
+  .fc-rule {
+    @apply h-px w-full bg-rule;
+  }
+
+  /* Soft film grain, applied as a pseudo-element on dark sections */
+  .fc-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

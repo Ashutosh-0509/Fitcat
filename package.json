@@ -1,0 +1,12 @@
+{
+  "name": "fitcat",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node run-dev.js",
+    "dev:frontend": "cd frontend && npx vite --port 5173 --host",
+    "dev:backend": "cd backend && node server.js",
+    "build": "cd frontend && npx vite build"
+  }
+}
