@@ -229,7 +229,11 @@ app.get("/api/time", (req, res) => {
   res.json({ time: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
-  console.log(`[FitCat Backend] Listening on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[FitCat Backend] Listening on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
 
